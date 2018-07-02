@@ -27,8 +27,8 @@ public class Date implements Comparable<Date>{
 			_year = Year;
 			_month = Month;
 			_day = Day;
-			_hour = 0;
-			_minute = 0;
+			_hour = 24;
+			_minute = 24;
 	}
 	
 	public void setTime(int Hour, int Minute) {
@@ -40,11 +40,79 @@ public class Date implements Comparable<Date>{
 		return _year;
 	}
 	
+	public int getMonth() {
+		return _month;
+	}
+	
+	public int getDay() {
+		return _day;
+	}
+	
+	public int getHour() {
+		return _hour;
+	}
+	
+	public int getMinute() {
+		return _minute;
+	}
+	
+	public String getLenght(int state, Date deadLine) {
+		if(state == 0) {
+			Integer retVal = deadLine._year-_year;
+			return retVal.toString();
+		}
+		if(state == 1) {
+			Integer year = deadLine._year-_year;
+			Integer month = deadLine._month-_month;
+			if(month<0) {
+				year -= 1;
+				month += 12; 
+			}
+			return year.toString() + "," + month.toString();
+		}
+		if(state == 2) {
+			Integer year = deadLine._year-_year;
+			Integer month = deadLine._month-_month;
+			if(month<0) {
+				year -= 1;
+				month += 12; 
+			}
+			Integer day = deadLine._day-_day;
+		}
+		return null;
+		
+	}
+	
+	
+	
 	@Override
 	public int compareTo(Date o) {
-		// TODO Auto-generated method stub
+		if(_year<o._year) {
+			return 1;
+		}else if(_year>o._year) {
+			return -1;
+		}else if(_month<o._month) {
+			return 1;
+		}else if(_month>o._month) {
+			return -1;
+		}else if(_day<o._day) {
+			return 1;
+		}else if(_day>o._day) {
+			return -1;
+		}else if(_hour>o._hour) {
+			return 1;
+		}else if(_hour<o._hour) {
+			return -1;
+		}else if(_minute>o._minute){
+			return 1;
+		}else if(_minute<o._minute) {
+			return -1;
+		}
+		else {
 		return 0;
-	}
+		}
+		}
+	
 
 	
 	
